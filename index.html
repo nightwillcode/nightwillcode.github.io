@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/lightbox.min.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/navigasi.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <title>Will</title>
+</head>
+<style>
+    html{
+        background-color:#0F1125;
+        color:white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .heading{
+    width:100%;
+    height:700px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/Contoh7.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    }
+
+    .portfolio,.produk,.contact,.syarat{
+        padding-top:5%;
+        padding-bottom: 2%;
+        text-align: center;
+    }
+
+    .service{
+        padding-top:5%;
+        padding-bottom: 1%;
+        text-align: center;
+    }
+
+    .judul{
+        font-size: 28px;
+    }
+
+    .flexing{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding:2%;
+        margin-bottom: 5px;
+    }
+    .bingkai, .produk-menu{
+        white-space: nowrap;        
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .bingkai, .produk-menu .dragging{
+        scroll-behavior: auto;
+    }   
+
+    .bingkai, .produk-menu .clicked{
+        scroll-behavior: smooth;
+    }   
+
+    .bingkai{
+        max-width: 99%;
+        position: relative;
+        padding:1%;
+    }
+
+    .bingkai .buttons{
+        position: absolute;
+        top:50%;
+        width: 35px;
+        height: 35px;
+        background-color: white;
+        cursor: pointer;
+        line-height: 45px;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        opacity: 0.6;
+    }
+    
+    .bingkai img:first-child{
+        left: 0px;
+    }
+
+    .bingkai img:last-child{
+        right: 0px;
+    }
+
+    .produk-menu img{
+        width: calc(99% /3);
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        margin-left: 10px;
+    }
+
+
+    .monitor{
+        width:100%;
+        height: 50%;
+        display: flex;
+        position: relative;
+        padding-left:2%;
+        padding-right:2%;
+    }
+    
+    /* .prices{
+        position: absolute;
+        left: 55%;
+        width: 25%;
+        height: auto;
+        padding:2%;
+        text-align: center;
+    } */
+
+    #mousepad{
+        color:#131c6f;
+    }
+    #paket{
+        color: #FF8730;
+    }
+    #total{
+        color: aqua;
+    }
+
+    .service-menu{
+        position: relative;
+        width:90%;  
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 65vh;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+
+    .service-info{
+        width:80%;
+        height: 50%;
+        position: relative;
+        padding-left:2%;
+        padding-right:2%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .service-items, .service-tier{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:40px;
+        width: 90%;
+        height:10%;
+        left:10%;
+    }
+
+
+    .service-header{
+        min-width: 100px;
+        margin-bottom: 0px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .choice-packages, .choice-sizes{
+        font-size: 80%;
+        text-align: center;
+        padding-top: 1vh;
+        width: 20%;
+        max-width: 200px;
+        min-width: 110px;
+        height: 5vh;
+        border-radius: 25px;
+        border-style: solid;
+        margin:2%;
+    }
+
+    .rowing{
+        display: flex;
+        justify-content: center;
+    }
+    .choice-sizes:hover{
+        cursor: pointer;
+        border-color: #131c6f;
+        color: #131c6f;
+    }
+
+    .choice-packages:hover{
+        cursor: pointer;
+        border-color: #FF8730;
+        color: #FF8730;
+    }
+    .picked:hover{
+        cursor: auto;
+        border-color: #FF8730;
+        color: white;
+    }       
+
+    .sosmed{
+        margin-top:40px;
+        margin-left:15px;
+        margin-right: 15px;
+        list-style-type:none;
+    }
+
+    .cards{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5vh;
+        width:80%;
+        max-width: 800px;
+        background-color: #161937;
+        text-align: left;
+        padding:2%;
+        border-radius: 15px;
+    }
+
+    .cards-toko img{
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .cards-toko{
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5vh;
+        text-align: left;
+        padding:2%;
+        display:flex;
+    }
+
+    .cards:hover{
+        transition: transform 0.5s;
+        transform: scale(1.02);
+    }
+
+    .cards-header{
+        margin-top:60px;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    .lists{
+        margin-left: 2%;
+        padding:10px;
+    }
+
+    h1{
+        margin: 25px;
+    }
+
+    .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    }
+
+    footer{
+        text-align: center;
+        padding-top:5%;
+    }
+    footer div{
+        border-top: 5px solid #2f367a;
+        padding:2%;
+    }
+
+    footer p{
+        margin:5px;
+    }
+
+    .canvas{    
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 600px;
+        max-height: 300px;
+        padding:0px;
+    }
+
+    
+    .foto{
+        aspect-ratio: 2 / 1;
+        width:100%;
+        height:100%;
+        background-color: whitesmoke ;
+        border-radius: 5px;
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #fotos{
+        width: 100%;
+        height: 100%;
+    }
+
+    #fotos img{
+        border: 5px solid black;
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .logo{
+        border: 10px solid #2D224E;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .nav-button{
+        padding-top:20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+        padding-right: 60px;
+        border-radius: 40px;
+        background: rgb(45,34,78);
+        background: linear-gradient(90deg, rgba(45,34,78,1) 0%, rgba(47,54,122,1) 51%, rgba(19,28,111,1) 100%);
+        cursor: pointer;
+    }
+
+    .nav-button-text{
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size: 20px;
+        font-weight: 600;
+        color:white;
+    }
+
+    .intro{
+        font-size: 20px;
+        font-weight: 400;
+    }
+    
+</style>
+<body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <div data-aos="fade-up" class="heading">
+        <div class="profile">   
+            <img class="logo" src="assets/Logo.png" alt="">
+            <h1>Zure.market</h1>
+            <br>
+            <p class="intro">zure.market for custom mousepad <br> Welcome to my page </p>
+            <br><br><br>
+            <a class="nav-button" onclick="ScrollForView('produk')"><h class="nav-button-text">Mousepad Info</h></a>
+        </div>
+    </div>
+    <div class="navigasi" id="navbar">
+
+        <div class="nav-left"><h2 class="nav-profile">zure.market</h2></div>
+
+        <div class="nav-middle">
+            <a class="nav" onclick="ScrollForView('produk')">Produk</a>
+            <a class="nav" onclick="ScrollForView('service')">Service</a>
+            <a class="nav" onclick="ScrollForView('syarat')">S&K</a>
+            <a class="nav" onclick="ScrollForView('contact')">Contact</a>
+        </div>
+
+    </div>
+    <div class="content">
+        <div>
+        <div data-aos="fade-up" class="produk"><p class="judul">Produk</p></div>
+        <div data-aos="fade-up" class="flexing">
+        <div class="bingkai">
+        <div class="produk-menu" id="carousel">
+            <a class="example-image-link" href="assets/CustomPremium1.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/CustomPremium1.png" alt="" draggable="false"/></a>
+            <a class="example-image-link" href="assets/CustomPremium2.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/CustomPremium2.png" alt="" draggable="false"/></a>
+            <a class="example-image-link" href="assets/CustomPremium3.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/CustomPremium3.png" alt="" draggable="false"/></a>
+            <a class="example-image-link" href="assets/CustomPremium4.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/CustomPremium4.png" alt="" draggable="false"/></a>
+            <!-- <a class="example-image-link" href="assets/Contoh1.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/Contoh1.png" alt="" draggable="false"/></a>
+            <a class="example-image-link" href="assets/Contoh7.png" data-lightbox="example-set" data-title=""><img class="example-image" src="assets/Contoh7.png" alt="" draggable="false"/></a> -->
+        </div>
+        </div>  
+        </div>
+        </div>
+
+        <div data-aos="fade-up" class="service"><p class="judul">Service</p></div>
+        <div class="service-menu">
+
+            <div data-aos="fade-up" class="monitor">
+                <div class="canvas">
+                    <div class="foto">
+                        <div id="fotos">
+                            <img src="assets/Contoh1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div data-aos="fade-up" class="service-info">
+        <div class="service-items">
+                <p class="service-header">Mousepad Size</p>
+                <div class="rowing">
+                <div class="choice-sizes"><a class="sizes">300x800x3mm</a><br><br><p class="harga">Rp.150.000</p></div>
+                <div class="choice-sizes"><a class="sizes">300x900x3mm</a><br><br><p class="harga">Rp.160.000</p></div>
+                <div class="choice-sizes"><a class="sizes">400x800x3mm</a><br><br><p class="harga">Rp.165.000</p></div>
+                <div class="choice-sizes"><a class="sizes">400x900x3mm</a><br><br><p class="harga">Rp.170.000</p></div>
+                </div>
+        </div>
+
+            <div class="service-tier">
+                <p class="service-header">Mousepad Package</p>
+                <div class="rowing">
+                <div class="choice-packages"><a class="packages">Custom Normal</a><br><br><p class="harga">+ Rp.0</p></div>
+                <div class="choice-packages"><a class="packages">Custom Premium</a><br><br><p class="harga">+ Rp.50.000</p></div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div data-aos="fade-up" class="syarat"><p class="judul">Syarat & Ketentuan</p>
+            <p data-aos="fade-up" class="cards-header">General</p>
+            <div data-aos="fade-up" class="cards">
+                    <li class="lists">Custom Normal: pembuatan produk sekitar 3-5 hari</li>
+                    <li class="lists">Custom Premium: Waktu pembuatan produk sekitar 4-10 hari</li>
+                    <li class="lists">Custom normal: wajib memberikan design gambar mousepad</li>
+                    <li class="lists">Custom premium: boleh memberikan design / memilih design yang ada</li>
+                    <li class="lists">Custom normal berisi: Mousepad</li>
+                    <li class="lists">Custom premium berisi: Mousepad, Stiker, Card dan Free Design (6-9 Design) </li>
+            </div>
+            <p data-aos="fade-up" class="cards-header">Format Pemesanan</p>
+            <div data-aos="fade-up" class="cards">
+            <ol>
+                <li class="lists">Silahkan order dahulu di tokopedia / shopee</li>
+                <li class="lists">Setiap gambar dilebihkan 2CM tiap sisi dari ukuran yang dipesan.</li>
+                <li class="lists">Tiap sisi akan terpotong 1-2cm pastikan object penting berada 3-4 ke tengah.</li>
+                <li class="lists">Note: Ukuran mousepad tidak sama percis, ada perbedaan sekitar 1-3cm</li>
+            </ol>
+            </div>
+
+            <p data-aos="fade-up" class="cards-header">Format Pengiriman Design</p>
+            <div data-aos="fade-up" class="cards">
+                <li class="lists">Gambar dapat dikirim ke email: dharmawanwilly9@gmail.com</li>
+                <li class="lists">Judul: Custom mousepad</li>
+                <li class="lists">Isi: File gambar dan nama pembeli</li>
+            </div>
+            
+            <p data-aos="fade-up" class="cards-header">Produk Akhir Mousepad</p>
+            <div data-aos="fade-up" class="cards">
+                <li class="lists">Mousepad dengan anti slip</li>
+                <li class="lists">Mudah dibersihkan dan dapat dicuci</li>
+                <li class="lists">Soft surface membuat pergerakan mouse semakin nyaman dan lincah</li>
+                <li class="lists">Ukuran 300x800 dan 300x900 dijahit hitam</li>
+                <li class="lists">Ukuran 400x800 dan 400x900 jahitan mengikuti gambar</li>
+            </div>
+            <p data-aos="fade-up" class="cards-header contact">Contact</p>
+            <div data-aos="fade-up" class="cards-toko">
+                <li class="sosmed"><a href=""><img src="assets/Instagram.png" alt=""></a></li>
+                <li class="sosmed"><a href=""><img src="assets/Facebook.png" alt=""></a></li>
+                <li class="sosmed"><a href=""><img src="assets/Tokopedia.png" alt=""></a></li>
+                <li class="sosmed"><a href=""><img src="assets/Shopee.png" alt=""></a></li>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+<footer>
+    <div>
+        <p>Project Landing Page</p>
+        <p>created by Will</p>
+        <p>Contact: dharmawanwilly9@gmail.com</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,50 @@
+.profile{
+    margin-top:50px;
+    width: 60%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: block;
+    line-height: 21px;
+    transition: 0.5s;
+}
+
+.backgrounds{
+    width:100%;
+}
+
+.navigasi{
+    width: 100%;
+    position: relative;
+    height: auto;
+    display: flex;
+    padding:1%;
+    background-color: #0A0B18;
+}
+
+.nav-left{
+    width: 30%;
+    font-size: 20px;
+}
+
+.nav-profile{
+    margin-top: -10px;
+    margin-left: 4vw;
+}
+
+.nav-middle{
+    width: 70%;
+}
+
+.nav:hover{
+    cursor: pointer;
+    color:#FF8730;
+}
+
+.nav{
+    margin-right: 6vw;
+    font-size: 20px;
+    font-weight:400;
+}

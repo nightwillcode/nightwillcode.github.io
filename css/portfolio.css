@@ -1,0 +1,39 @@
+.portfolio-menu{
+    width: 99%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20vw 20vw;
+    gap: 10px;
+    margin:0px;
+    padding: 2%;
+}
+
+.portfolio-card{
+    width:100%;
+    height:auto; 
+    padding:0.5%;
+    display:flex;
+    overflow: hidden;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.portfolio-images{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.portfolio-images:hover{
+    transition-duration: 2s;
+    transform: scale(1.1) rotate(-2deg);
+    max-width: 100%;
+}
+
+/* <div data-aos="fade-up" class="portfolio"><p class="judul">Portfolio</p></div>
+        <div class="portfolio-menu">
+            <div data-aos="zoom-in-up" class="portfolio-card"><img src="assets/Contoh7.png" alt="" class="portfolio-images"></div>
+            <div data-aos="zoom-in-up" class="portfolio-card"><img src="assets/Contoh7.png" alt="" class="portfolio-images"></div>
+            <div data-aos="zoom-in-up" class="portfolio-card"><img src="assets/Contoh7.png" alt="" class="portfolio-images"></div>
+            <div data-aos="zoom-in-up" class="portfolio-card"><img src="assets/Contoh7.png" alt="" class="portfolio-images"></div>
+</div> */
